@@ -1,0 +1,48 @@
+<SCRIPT LANGUAGE="JavaScript">
+//Gets the href for the right clicked link or image
+
+var MyExt = new ActiveXObject("IEext.IEExtension");
+if(MyExt)
+	{
+		var MyEvent = external.menuArguments.event;
+		var MyDoc = external.menuArguments.document;
+
+  		var MySel = MyDoc.selection;
+  		var Rng = MySel.createRange();
+  		var MyStr = new String(Rng.text);
+		MyExt.SelText = MyStr
+		
+		var ref = external.menuArguments.document.URL
+		MyExt.PageURL = ref
+		
+		var MyElement = MyDoc.elementFromPoint(MyEvent.clientX, MyEvent.clientY);
+		var MyAnchor = MyElement;
+		var URL = "";
+		while(MyAnchor.tagName!="A" && MyAnchor.tagName!="AREA" && MyAnchor.tagName!="HTML") 
+		{
+			MyAnchor=MyAnchor.parentElement;
+		}
+		if(MyEvent.type=="MenuExtUnknown" || MyEvent.type=="MenuExtImage" || MyEvent.type=="MenuExtAnchor")
+		{
+			if(MyAnchor.tagName=="A" || MyAnchor.tagName=="AREA") 
+			{
+			URL = MyAnchor.href;
+			MyExt.URL = URL;
+			MyExt.LinkType = "Link";
+			}
+			if(MyAnchor.tagName=="HTML" && MyElement.tagName=="IMG") 
+			{
+			URL = MyElement.src;
+			MyExt.URL = URL;
+			MyExt.LinkType = "IMG";
+			}
+		}
+	
+			MyExt.ShowInfo();
+
+	}
+else
+	{
+		alert("An error occured!");
+	}
+</SCRIPT>
