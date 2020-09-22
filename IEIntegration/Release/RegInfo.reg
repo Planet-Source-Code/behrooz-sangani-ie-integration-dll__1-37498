@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\My &Test Item]
+@="res://C:\\IEext.dll/CONTEXT_HANDLE.HTM"
+"context"=dword:00000023
+

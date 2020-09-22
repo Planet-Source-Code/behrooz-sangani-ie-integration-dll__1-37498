@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Author" content="Behrooz Sangani <bs20014@yahoo.com>">
+<meta name="Copyright" content="Copyright (c) 2002 Behrooz Sangani All rights reserved">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>There are 3 general steps</title>
+<style fprolloverstyle>A:hover {color: #FF0000}
+</style>
+</head>
+
+<body>
+
+<h2 dir="ltr" align="center"><font color="#800000" face="Arial">IE Integration DLL</font></h2>
+
+<p dir="ltr" align="center"><b><font face="Arial">By:
+<a href="mailto:bs20014@yahoo.com?subject=IE Integration DLL" style="text-decoration: none">
+Behrooz Sangani</a></font></b></p>
+<h3 dir="ltr"><font face="Arial"><a name="Content">Content</a></font></h3>
+<ul>
+  <li dir="ltr">
+<p dir="ltr"><font face="Arial"><a href="#How to add your program to IE Menu">How to add your program to IE Menu</a></font></li>
+<li dir="ltr">
+<p dir="ltr"><font face="Arial"><a href="#How to add the html file as a resource to your DLL">How to add the html 
+file as a resource to your DLL</a></font></li>
+<li dir="ltr">
+<p dir="ltr"><font face="Arial"><a href="#Registry Values">Registry Values</a></font></li>
+<li dir="ltr">
+<p dir="ltr"><font face="Arial"><a href="#Demo Installation & Final Notes">Demo Installation &amp; 
+Final Notes</a></font></li>
+</ul>
+<p dir="ltr">&nbsp;</p>
+<h3 dir="ltr"><font face="Arial"><a name="How to add your program to IE Menu">How to add your program to IE Menu</a></font></h3>
+<p dir="ltr" align="left"><font face="Arial" size="2">This article and source code teaches you how to add your program to 
+IE Menu so that when somebody right clicks a link or selects a text <br>
+in a web page he can choose to launch your program.</font></p>
+<p dir="ltr" align="center">
+<font face="Arial">
+<img border="0" src="images/iemenu.JPG" align="center" alt="IE Menu Integration" style="border-style: solid; border-width: 1" width="593" height="366"></font></p>
+<p dir="ltr"><font face="Arial" size="2">There are 3 general steps:</font></p>
+<ol>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2">You have to make a DLL :) If you choose to have a form in your 
+  DLL this form must be shown as <b>modal</b>. This is very important.</font></li>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2">You need to write a web page containing the script that calls 
+  your dll. This script is generally written in JavaScript. <br>
+  You have two choices: whether <b>including this web page in your program and 
+  distributing it as a single file </b><br>
+  or <b><a href="#How to add the html file as a resource to your DLL">adding 
+  your page to your dll as a resource</a> and calling it by res:// protocol</b></font></li>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2"><a href="#Registry Values">Add a few values to registry</a></font></li>
+</ol>
+<p dir="ltr" align="right"><font face="Arial" size="2"><a href="#Content">Back To Content</a></font></p>
+<h3 dir="ltr" align="left"><font face="Arial"><br>
+<a name="How to add the html file as a resource to your DLL">How to add the html 
+file as a resource to your DLL</a></font></h3>
+<p dir="ltr"><font face="Arial" size="2">You may have your own way. This is the way I have done it:<br>
+1 - Make your DLL without any fuss<br>
+2 - Use <a href="http://rpi.net.au/~ajohnson/resourcehacker">Resource Hacker</a> 
+to modify your DLL</font></p>
+<ul>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2">Open your file using <b>File</b> menu</font></li>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2">From <b>Action</b> menu choose <b>Add a new resource ...<img border="0" src="images/reshack.JPG" alt="Resource Hacker Add New" align="center" width="273" height="350"></b></font></li>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2">As you can see in the screenshot open your html file, for 
+  Resource Type choose <b>23</b>, for Resource Name choose <b>your html filename</b> 
+  and set your language to <b>English</b></font></li>
+  <li dir="ltr">
+  <p dir="ltr"><font face="Arial" size="2">Update your DLL by saving these changes</font></li>
+</ul>
+  <p dir="ltr" align="right"><font face="Arial" size="2"><a href="#Content">Back To Content</a></font><h3 dir="ltr">
+<font face="Arial"><a name="Registry Values">Registry Values</a></font></h3>
+<p dir="ltr"><font face="Arial" size="2">Registry path for IE menu items is:</font></p>
+<p dir="ltr"><font face="Arial" size="2"><b>HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt</b></font></p>
+<p dir="ltr"><font face="Arial" size="2">Each key in this section represents a menu item. The default value is 
+the path to the html page and the context value is the place of the item in the 
+menu.</font></p>
+<p dir="ltr"><font face="Arial" size="2">If you have have chosen to add your html page as a resource to your 
+DLL the your path here will be <b>res://%DLL PATH%/MyPage.htm </b>else you need 
+to set the path to your html file<br>
+&nbsp;</font></p>
+<p dir="ltr" align="right"><font face="Arial" size="2"><a href="#Content">Back To Content</a></font></p>
+<h3 dir="ltr"><font face="Arial"><a name="Demo Installation &amp; Final Notes">Demo Installation &amp; 
+Final Notes</a></font></h3>
+<p dir="ltr"><font face="Arial" size="2">To install the demo project go to release folder and run <b>
+install.bat&nbsp; </b>then close all your open browsers, 
+this page will be opened automatically after installation. </font> </p>
+<p dir="ltr" align="center"><font face="Arial"><b><a href="http://www.geocities.com/bs20014/">Right 
+click this link to see the results</a></b></font></p>
+
+<p dir="ltr" align="center">&nbsp;</p>
+
+<p dir="ltr" align="left"><font face="Arial" size="2">I hope you have found this useful. 
+If so place your
+<a href="http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=37498&lngWId=1">
+comments and votes on PSC</a></font></p>
+
+<p dir="ltr" align="left"><font face="Arial" size="2">Nice Coding....</font></p>
+
+<p dir="ltr" align="right"><font face="Arial" size="2"><a href="#Content">Back To Content</a></font></p>
+
+<p align="center"><font face="Arial" size="2">=================================</font></p>
+<p align="center"><font face="Arial" size="2">Copyright © 2002
+<a href="mailto:bs20014@yahoo.com?subject=IE Integration DLL">Behrooz Sangani
+</a></font></p>
+<p align="center"><font face="Arial" size="2">
+<a href="http://www.geocities.com/bs20014/">Go to my web site</a></font></p>
+
+</body>
+
+</html>
